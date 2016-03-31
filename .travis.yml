@@ -11,8 +11,6 @@ os:
 
 language: cpp
 
-compiler: clang
-
 #branches:
   #only:
     #- dev
@@ -41,7 +39,8 @@ addons:
     - liblapack-dev
     - libsuitesparse-dev
     - libedit-dev
-    - libboost-all-dev
+    - libboost1.55-all-dev
+    #- libboost-all-dev
 
     # Python3
     - python3-dev
