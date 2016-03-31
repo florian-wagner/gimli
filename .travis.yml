@@ -3,9 +3,7 @@
 # Before commiting changes to this file, check consistency on http://lint.travis-ci.org/
 
 # Most explicit routing to GCE Precise
-sudo: required
-dist: precise
-group: edge
+sudo: false
 
 language: cpp
 
@@ -50,15 +48,15 @@ addons:
     - python3-matplotlib
     - python3-pytest
 
-before_install:
-    # hack automatic OS detection
-    - echo 'NAME="Ubuntu"' | sudo tee /etc/os-release
-    - echo 'VERSION="14.04.2 LTS, Trusty Tahr"' | sudo tee -a /etc/os-release
-    - echo 'ID=ubuntu' | sudo tee -a /etc/os-release
-    - echo 'ID_LIKE=debian' | sudo tee -a /etc/os-release
-    - echo 'PRETTY_NAME="Ubuntu 14.04.2 LTS"' | sudo tee -a /etc/os-release
-    - echo 'VERSION_ID="14.04"' | sudo tee -a /etc/os-release
-    - echo 'HOME_URL="http://www.ubuntu.com/"' | sudo tee -a /etc/os-release
+#before_install:
+    ## hack automatic OS detection
+    #- echo 'NAME="Ubuntu"' | sudo tee /etc/os-release
+    #- echo 'VERSION="14.04.2 LTS, Trusty Tahr"' | sudo tee -a /etc/os-release
+    #- echo 'ID=ubuntu' | sudo tee -a /etc/os-release
+    #- echo 'ID_LIKE=debian' | sudo tee -a /etc/os-release
+    #- echo 'PRETTY_NAME="Ubuntu 14.04.2 LTS"' | sudo tee -a /etc/os-release
+    #- echo 'VERSION_ID="14.04"' | sudo tee -a /etc/os-release
+    #- echo 'HOME_URL="http://www.ubuntu.com/"' | sudo tee -a /etc/os-release
 
 install:
     - curl -sL http://install.pygimli.org | bash -s py=3 j=4
