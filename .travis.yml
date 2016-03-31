@@ -5,12 +5,13 @@
 # Most explicit routing to GCE Precise
 sudo: false
 
+os:
+    - linux
+      #- osx
+
 language: cpp
 
 compiler: clang
-os:
-    - linux
-    #- osx
 
 #branches:
   #only:
@@ -22,6 +23,7 @@ addons:
   apt:
     sources:
     - llvm-toolchain-precise-3.7
+    - kalakris-cmake
     - ubuntu-toolchain-r-test
 
     packages:
