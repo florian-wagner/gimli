@@ -14,29 +14,36 @@ os:
     - linux
     #- osx
 
-branches:
-  only:
-    - dev
+#branches:
+  #only:
+    #- dev
 
-osx_image: xcode7.2b2
+#osx_image: xcode7.2b2
 
 addons:
   apt:
     packages:
+    # Essentials
+    - cmake
     - build-essential
-    - clang-3.6
-    - libclang-3.6-dev
-    - llvm-3.6
-    - libllvm-3.6-ocaml-dev
+    - coreutils
+    - clang-3.7
+    - libclang-3.7-dev
+    - llvm-3.7
+    - libllvm-3.7-ocaml-dev
+
+    # Blas, Lapack, boost
     - libblas-dev
     - liblapack-dev
     - libsuitesparse-dev
     - libedit-dev
-    - coreutils
+    - libboost-all-dev
+
+    # Python3
     - python3-dev
     - python3-numpy
-    - cmake
-    - liboost-all-dev
+    - python3-matplotlib
+    - python3-pytest
 
 before_install:
     # hack automatic OS detection
