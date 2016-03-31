@@ -37,6 +37,7 @@ addons:
     - llvm-3.7
     - libllvm-3.7-ocaml-dev
     - g++-5
+    - gcc-5
 
     # Blas, Lapack, boost
     - libblas-dev
@@ -64,6 +65,7 @@ cache:
     #- echo 'HOME_URL="http://www.ubuntu.com/"' | sudo tee -a /etc/os-release
 
 install:
+    - export CXX="g++-5" CC="gcc-5"
     - curl -sL http://install.pygimli.org | bash -s py=3 j=4
 
 #notifications:
