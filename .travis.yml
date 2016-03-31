@@ -22,6 +22,11 @@ os:
 
 addons:
   apt:
+    sources:
+    - llvm-toolchain-precise-3.7
+    - kalaris-cmake
+    - ubuntu-toolchain-r-test
+
     packages:
     # Essentials
     - cmake
