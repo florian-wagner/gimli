@@ -14,8 +14,7 @@ env:
 language: python
 
 python:
-  - "2.7"
-  - "3.5"
+  - "3.2"
 
 #branches:
   #only:
@@ -69,9 +68,9 @@ cache:
     #- echo 'HOME_URL="http://www.ubuntu.com/"' | sudo tee -a /etc/os-release
 
 install:
+    - python --version
     - export CXX="g++-5" CC="gcc-5"
     - ls /usr/lib/x86_64-linux-gnu/libboost*
-    - ls /usr/lib/x86_64-linux-gnu/libpython*
     - curl -sL http://install.pygimli.org | bash -s py=3 j=4
 
 #notifications:
