@@ -50,7 +50,7 @@ addons:
     - libboost1.55-all-dev
 
     # Python3
-    - python${TRAVIS_PYTHON_VERSION}-dev
+    - python3.4-dev
     - python3-numpy
     - python-matplotlib
 
@@ -70,6 +70,8 @@ cache:
 install:
   - export PYTHON_INCLUDE_DIR="`find /usr/include -name Python.h -printf '%h\n' | grep \"python${TRAVIS_PYTHON_VERSION}\"`"
   - export PYTHON_LIBRARY="`find /usr/lib -name \"libpython${TRAVIS_PYTHON_VERSION}*.so\" -print -quit`"
+  - echo $PYTHON_INCLUDE_DIR
+  - echo $PYTHON_LIBRARY
   - export CXX="g++-5" CC="gcc-5"
   - curl -sL http://install.pygimli.org | bash -s py=3 j=4
 
