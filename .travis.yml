@@ -11,7 +11,11 @@ os:
 env:
   - DISTRO=ubuntu-precise
 
-language: cpp
+language: python
+
+python:
+  - "2.7"
+  - "3.5"
 
 #branches:
   #only:
@@ -66,6 +70,8 @@ cache:
 
 install:
     - export CXX="g++-5" CC="gcc-5"
+    - ls /usr/lib/x86_64-linux-gnu/libboost*
+    - ls /usr/lib/x86_64-linux-gnu/libpython*
     - curl -sL http://install.pygimli.org | bash -s py=3 j=4
 
 #notifications:
