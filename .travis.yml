@@ -50,7 +50,7 @@ addons:
     - libboost1.55-all-dev
 
     # Python3
-    - python3-dev
+    - python${TRAVIS_PYTHON_VERSION}-dev
     - python3-numpy
     - python-matplotlib
 
@@ -68,10 +68,10 @@ cache:
     #- echo 'HOME_URL="http://www.ubuntu.com/"' | sudo tee -a /etc/os-release
 
 install:
-    - python --version
-    - export CXX="g++-5" CC="gcc-5"
-    - ls /usr/lib/x86_64-linux-gnu/libboost*
-    - curl -sL http://install.pygimli.org | bash -s py=3 j=4
+  - export PYTHON_INCLUDE_DIR="`find /usr/include -name Python.h -printf '%h\n' | grep \"python${TRAVIS_PYTHON_VERSION}\"`"
+  - export PYTHON_LIBRARY="`find /usr/lib -name \"libpython${TRAVIS_PYTHON_VERSION}*.so\" -print -quit`"
+  - export CXX="g++-5" CC="gcc-5"
+  - curl -sL http://install.pygimli.org | bash -s py=3 j=4
 
 #notifications:
 #email:
