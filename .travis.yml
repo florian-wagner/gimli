@@ -45,6 +45,7 @@ addons:
     - liblapack-dev
     - libsuitesparse-dev
     - libedit-dev
+    - libz-dev
     - libboost1.55-all-dev
 
     # Python3
@@ -68,8 +69,8 @@ cache:
     #- echo 'HOME_URL="http://www.ubuntu.com/"' | sudo tee -a /etc/os-release
 
 install:
-  - export PYTHON_INCLUDE_DIR="`find /usr/include -name Python.h -printf '%h\n' | grep \"python${TRAVIS_PYTHON_VERSION}\"`"
-  - export PYTHON_LIBRARY="`find /usr/lib -name \"libpython${TRAVIS_PYTHON_VERSION}*.so\" -print -quit`"
+  - export PYTHON_INCLUDE_DIR="`find /usr/include -name Python.h -printf '%h\n' | grep \"python3\"`"
+  - export PYTHON_LIBRARY="`find /usr/lib -name \"libpython3*.so\" -print -quit`"
   - echo $PYTHON_INCLUDE_DIR
   - echo $PYTHON_LIBRARY
   - export CXX="g++-5" CC="gcc-5"
