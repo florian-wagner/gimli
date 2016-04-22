@@ -45,7 +45,6 @@ addons:
     - liblapack-dev
     - libsuitesparse-dev
     - libedit-dev
-    - libz-dev
     - libboost1.55-all-dev
 
     # Python3
