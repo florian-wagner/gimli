@@ -48,8 +48,7 @@ addons:
     - libboost1.55-all-dev
 
     # Python3
-    - python3-dev
-    - libpython3-all-dev
+    - python3.5-dev
     - python-pytest
     - python3-numpy
     - python-matplotlib
