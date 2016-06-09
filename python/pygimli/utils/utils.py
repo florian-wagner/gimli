@@ -282,6 +282,10 @@ def diff(v):
     """
     d = None
 
+    if type(v) == np.ndarray:
+        if v.ndim == 2:
+            v = pg.R3Vector(v)
+
     if isinstance(v, pg.R3Vector):
         d = pg.R3Vector(len(v) - 1)
     else:
@@ -343,7 +347,7 @@ def xyToLength(x, y):
 def cumDist(p):
     """The progressive i.e, cumulative length for the path p.
 
-    d = [0.0, d[0]+ |p[1]-p[0]|, d[1] + |p[2]-p[1]| + ...]
+    d = [0.0, d[0]+ | p[1]-p[0] |, d[1] + | p[2]-p[1] | + ...]
 
     Parameters
     ----------

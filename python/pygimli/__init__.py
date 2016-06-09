@@ -45,7 +45,7 @@ checkAndFixLocaleDecimal_point(verbose=True)
 
 if '--debug' in sys.argv:
     print("set debug mode")
-    _pygimli_.setDebug(True)
+    core._pygimli_.setDebug(True)
 
 def warnNonEmptyArgs(kwargs):
     if len(kwargs) > 0:
@@ -115,6 +115,11 @@ def test(target=None, show=False, onlydoctests=False, coverage=False, htmlreport
 # provide __version__ string
 from ._version import get_versions
 __version__ = get_versions()['version']
+
+def version():
+    ''' Shortcut to show and return current version. '''
+    print(__version__)
+    return __version__
 
 #__all__ = ['__version__']
 #__all__.extend(core.__all__)  

@@ -1063,7 +1063,7 @@ def setPlotStuff(fontsize=7, dpi=None):
     rcParams['ytick.labelsize'] = fontsize
     rcParams['legend.fontsize'] = fontsize
     rcParams['font.family'] = 'sans-serif'
-    rcParams['font.sans-serif'] = ['Times New Roman']
+    rcParams['font.sans-serif'] = ['Helvetica']#['Times New Roman']
     rcParams['text.usetex'] = False
     rcParams['font.size'] = 0.6*fontsize
 #    rcParams['figure.figsize'] = 7.3, 4.2
@@ -1077,7 +1077,7 @@ def setPlotStuff(fontsize=7, dpi=None):
     rcParams['ytick.major.width'] = rcParams['xtick.major.width']
     rcParams['ytick.minor.size'] = rcParams['xtick.minor.size']
     rcParams['ytick.minor.width'] = rcParams['xtick.minor.width']
-
+    
     if dpi is not None:
         rcParams['figure.dpi'] = dpi
         rcParams['savefig.dpi'] = dpi
