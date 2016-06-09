@@ -3,15 +3,15 @@
 # Before commiting changes to this file, check consistency on http://lint.travis-ci.org/
 
 # Most explicit routing to GCE Precise
-sudo: required
+sudo: true
 dist: trusty
 
 os: linux
 
 language: c++
 
-#python:
-  #- "3.4"
+python:
+  - "3.4"
 
 #branches:
   #only:
@@ -43,12 +43,16 @@ addons:
 
     # PYTHON3
     - python3-dev
-    - python-pytest
+    - python3-pytest
     - python3-numpy
-    - python-matplotlib
+    - python3-matplotlib
+    - python3-sphinx
 
 cache:
   - apt
+  - pip
+  directories:
+    - $HOME/thirdParty
 
 env:
   global:
@@ -62,14 +66,10 @@ before_install:
   - tar xf $LLVM_ARCHIVE_PATH -C $HOME/clang+llvm --strip-components 1
   - export PATH=$HOME/clang+llvm/bin:$PATH
   - export CXX="g++-5" CC="gcc-5"
+  # Documentation requirements
+  - sudo pip install -r doc/requirements.txt
 
 install:
-
-  # Install doc requirements
-  - cd doc
-  - sudo pip install -q -U -r requirements.txt
-  - cd ..
-
   # Show Infos
   - uname -a
   - gcc --version
@@ -86,6 +86,7 @@ install:
   - cmake ../trunk
   - make -j 4 gimli
   - make pygimli J=3
+  - make html
 
 script:
   - python -c "import pygimli; pygimli.test(show=False)"
