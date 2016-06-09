@@ -52,6 +52,7 @@ cache:
   pip: True
   directories:
     - $HOME/thirdParty
+    - $HOME/build
 
 env:
   global:
@@ -81,15 +82,17 @@ install:
   # Main build
   - mkdir trunk
   - shopt -s extglob
-  - mv !(trunk) trunk # necessary because of lib and thirdParty backcopying
-  - mkdir build
+  - mv !(trunk|build|thirdParty) trunk # necessary because of lib and thirdParty backcopying
+  - mkdir -p build
   - cd build
   - cmake ../trunk
   - make -j 4 gimli
   - make pygimli J=3
-  - make html
 
 script:
+  - export PATH=$HOME/build/bin:$PATH
+  - export PYTHONPATH=$HOME/trunk/python:$PYTHONPATH
+  - make html
   - python -c "import pygimli; pygimli.test(show=False)"
 
 #notifications:
