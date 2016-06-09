@@ -6,10 +6,9 @@
 sudo: false
 dist: precise
 
-os:
-  - linux
+os: linux
 
-language: cpp
+language: c++
 
 #python:
   #- "3.4"
@@ -29,7 +28,7 @@ addons:
     - boost-latest
 
     packages:
-    # Essentials
+    # ESSENTIALS
     - cmake
     - build-essential
     - coreutils
@@ -40,15 +39,15 @@ addons:
     - g++-5
     - gcc-5
 
-    # Blas, Lapack, boost
+    # BLAS, LAPACK, BOOST
     - libblas-dev
     - liblapack-dev
     - libsuitesparse-dev
     - libedit-dev
     - libboost1.55-all-dev
 
-    # Python3
-    - python3.5-dev
+    # PYTHON3
+    - python3-dev
     - python-pytest
     - python3-numpy
     - python-matplotlib
@@ -56,21 +55,7 @@ addons:
 cache:
   - apt
 
-#before_install:
-    ## hack automatic OS detection
-    #- echo 'NAME="Ubuntu"' | sudo tee /etc/os-release
-    #- echo 'VERSION="14.04.2 LTS, Trusty Tahr"' | sudo tee -a /etc/os-release
-    #- echo 'ID=ubuntu' | sudo tee -a /etc/os-release
-    #- echo 'ID_LIKE=debian' | sudo tee -a /etc/os-release
-    #- echo 'PRETTY_NAME="Ubuntu 14.04.2 LTS"' | sudo tee -a /etc/os-release
-    #- echo 'VERSION_ID="14.04"' | sudo tee -a /etc/os-release
-    #- echo 'HOME_URL="http://www.ubuntu.com/"' | sudo tee -a /etc/os-release
-
 install:
-  - export PYTHON_INCLUDE_DIR="`find /usr/include -name Python.h -printf '%h\n' | grep \"python3\"`"
-  - export PYTHON_LIBRARY="`find /usr/lib -name \"libpython3*.so\" -print -quit`"
-  - echo $PYTHON_INCLUDE_DIR
-  - echo $PYTHON_LIBRARY
   - export CXX="g++-5" CC="gcc-5"
   - curl -sL http://install.pygimli.org | bash -s py=3 j=4
 
