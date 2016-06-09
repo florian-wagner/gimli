@@ -49,8 +49,8 @@ addons:
     - python3-sphinx
 
 cache:
-  - apt
-  - pip
+  apt: True
+  pip: True
   directories:
     - $HOME/thirdParty
 
