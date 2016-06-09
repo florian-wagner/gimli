@@ -22,7 +22,6 @@ python:
 addons:
   apt:
     sources:
-    - kalakris-cmake
     - ubuntu-toolchain-r-test
     - boost-latest
 
