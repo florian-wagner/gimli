@@ -65,8 +65,6 @@ before_install:
   - tar xf $LLVM_ARCHIVE_PATH -C $HOME/clang+llvm --strip-components 1
   - export PATH=$HOME/clang+llvm/bin:$PATH
   - export CXX="g++-5" CC="gcc-5"
-  # Documentation requirements
-  - sudo pip install -r doc/requirements.txt
 
 install:
   # Show Infos
@@ -75,6 +73,10 @@ install:
   - python --version
   - cmake --version
   - python -c "import numpy; print(numpy.__version__)"
+
+  # Documentation requirements
+  - pip --version
+  - pip install -r doc/requirements.txt
 
   # Main build
   - mkdir trunk
