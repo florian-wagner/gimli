@@ -93,19 +93,18 @@ install:
   - mv !(trunk|build|thirdParty) trunk # necessary because of lib and thirdParty backcopying
   - mkdir -p build
   - cd build
-  - cmake ../trunk
+  - cmake -DPYVERSION=3 -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.4m.so -DBoost_PYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libboost_python-py34.so ../trunk
   - make -j 4 gimli
   - make pygimli J=4
 
 script:
   # Test gimli
-  - make check
-  - ./bin/gimliUnitTest
-  
+  - make gtest
+
   # Test pygimli
-  - export PATH=`pwd`/bin:$PATH
   - export PYTHONPATH=$PYTHONPATH:`pwd`/../trunk/python
-  - python -c "import pygimli; pygimli.test(show=False)"
+  - make pgtest
+  - python -c "import pygimli; pygimli.test(onlydoctests=False, show=False)"
   
   # Test doc build
   - make html
