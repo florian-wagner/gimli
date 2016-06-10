@@ -69,7 +69,7 @@ env:
 before_install:
   # Install LLVM manually due to broken APT sources
   - wget http://llvm.org/releases/$LLVM_VERSION/clang+llvm-$LLVM_VERSION-x86_64-linux-gnu-ubuntu-14.04.tar.xz -O $LLVM_ARCHIVE_PATH
-  - mkdir $HOME/clang+llvm
+  - mkdir -p $HOME/clang+llvm
   - tar xf $LLVM_ARCHIVE_PATH -C $HOME/clang+llvm --strip-components 1
   - export PATH=$HOME/clang+llvm/bin:$PATH
   - export CXX="g++-5" CC="gcc-5"
@@ -87,7 +87,7 @@ install:
   - pip install -r doc/requirements.txt
 
   # Main build
-  - mkdir trunk
+  - mkdir -p trunk
   - shopt -s extglob
   - mv !(trunk|build|thirdParty) trunk # necessary because of lib and thirdParty backcopying
   - mkdir -p build
