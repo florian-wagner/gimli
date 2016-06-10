@@ -87,7 +87,8 @@ install:
   - pip install -r doc/requirements.txt
 
   # Main build
-  - mkdir -p trunk
+  - rm -rf trunk
+  - mkdir trunk
   - shopt -s extglob
   - mv !(trunk|build|thirdParty) trunk # necessary because of lib and thirdParty backcopying
   - mkdir -p build
