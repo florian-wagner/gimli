@@ -73,6 +73,7 @@ before_install:
   - tar xf $LLVM_ARCHIVE_PATH -C $HOME/clang+llvm --strip-components 1
   - export PATH=$HOME/clang+llvm/bin:$PATH
   - export CXX="g++-5" CC="gcc-5"
+  - sudo apt-get build-dep -qq python-matplotlib python-sphinx
 
 install:
   # Show Infos
@@ -95,15 +96,11 @@ install:
   - cd build
   - cmake -DPYVERSION=3 -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.4m.so -DBoost_PYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libboost_python-py34.so ../trunk
   - make -j 4 gimli
-  - make pygimli J=4
+  - make pygimli J=6
 
 script:
-  # Test gimli
-  - make gtest
-
   # Test pygimli
   - export PYTHONPATH=$PYTHONPATH:`pwd`/../trunk/python
-  - make pgtest
   - python -c "import pygimli; pygimli.test(onlydoctests=False, show=False)"
   
   # Test doc build
