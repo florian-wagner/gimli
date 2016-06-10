@@ -53,13 +53,14 @@ addons:
     - python3-numpy
     - python3-matplotlib
     - python3-sphinx
+    - python3-pil
 
 cache:
   apt: True
   pip: True
   directories:
-    - $HOME/thirdParty
-    - $HOME/build
+    - $TRAVIS_BUILD_DIR/thirdParty
+    - $TRAVIS_BUILD_DIR/build
 
 env:
   global:
@@ -73,7 +74,7 @@ before_install:
   - tar xf $LLVM_ARCHIVE_PATH -C $HOME/clang+llvm --strip-components 1
   - export PATH=$HOME/clang+llvm/bin:$PATH
   - export CXX="g++-5" CC="gcc-5"
-  - sudo apt-get build-dep -qq python-matplotlib python-sphinx
+  - sudo apt-get build-dep -qq python3-matplotlib
 
 install:
   # Show Infos
