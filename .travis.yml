@@ -101,11 +101,13 @@ install:
   - shopt -s extglob
   - mv !(trunk|build|thirdParty) trunk # necessary because of lib and thirdParty backcopying
   - mkdir -p build
+  - rm -f build/build_tests.html # remove old test report
+  - rm -f build/CMakeCache.txt # clean old cache
   - cd build
   - ls
   - cmake -DPYVERSION=3 -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.4m.so -DBoost_PYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libboost_python-py34.so ../trunk
   - make -j 4 gimli
-  - make pygimli J=6
+  - make pygimli J=4
 
 script:
   # Test pygimli
@@ -113,6 +115,9 @@ script:
   - python -c "import pygimli; pygimli.test(onlydoctests=False, show=False)"
 
   # Test doc build
+  - export PUBLISH="True" # for correct PATH settings in sidebar gallery
+  - export PATH=`pwd`/../trunk/python/apps:$PATH
+  - chmod +x ../trunk/python/apps/*
   - make html
 
 #notifications:
