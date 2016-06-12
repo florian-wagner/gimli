@@ -14,7 +14,7 @@ Usage:
 from . import core
 from .core import *
 #from .core._pygimli_ import *
-    
+
 import locale
 
 def checkAndFixLocaleDecimal_point(verbose=False):
@@ -122,4 +122,4 @@ def version():
     return __version__
 
 #__all__ = ['__version__']
-#__all__.extend(core.__all__)  
+#__all__.extend(core.__all__)
