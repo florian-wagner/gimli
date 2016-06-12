@@ -79,6 +79,7 @@ before_install:
   - tar xf $LLVM_ARCHIVE_PATH -C $HOME/clang+llvm --strip-components 1
   - export PATH=$HOME/clang+llvm/bin:$PATH
   - export CXX="g++-5" CC="gcc-5"
+  - sudo apt-get build-dep -qq python3-matplotlib
 
 install:
   # Show Infos
@@ -90,7 +91,7 @@ install:
 
   # Documentation requirements
   - pip --version
-  - pip install -r doc/requirements.txt
+  - pip install -U -r doc/requirements.txt
 
   # Main build
   - rm -rf trunk
@@ -99,6 +100,7 @@ install:
   - mv !(trunk|build|thirdParty) trunk # necessary because of lib and thirdParty backcopying
   - mkdir -p build
   - cd build
+  - ls
   - cmake -DPYVERSION=3 -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.4m.so -DBoost_PYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libboost_python-py34.so ../trunk
   - make -j 4 gimli
   - make pygimli J=6
